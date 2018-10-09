@@ -1,0 +1,1710 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Student Dashboard</title>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -- >
+    
+    <!--TODO: Common Date Picker. UI-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/css/animate.min.css" rel="stylesheet" />
+    <link href="/static/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+    <link href="/static/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/poweruser/css/datatables.css" />
+
+    <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/js/light-bootstrap-dashboard.js"></script>
+    <script src="/static/poweruser/js/datatables.js"></script>
+        <script type="text/javascript">
+    $(document).ready(function() {
+        $('#Table').DataTable({"pageLength": 50});
+    } );
+
+    </script>
+
+
+<style type="text/css">
+    
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+
+</style></head>
+
+<body style="">
+
+<div class="modal" role="dialog" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">title</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple">
+        <div class="sidebar-wrapper">
+
+            <div class="logo">
+                <a class="simple-text">
+                    Dashboard
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="/dashboard/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile/">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/resume/">
+                        <i class="pe-7s-note2"></i>
+                        <p>Manage Resume</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jobapplications/">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Job Openings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/applications/">
+                        <i class="pe-7s-science"></i>
+                        <p>Your applications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jaf_list/">
+                        <i class="pe-7s-bell"></i>
+                        <p>Proforma</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/abhiavk/testschedule">
+                        <i class="pe-7s-date pe-5x"></i>
+                        <p>Calendar</p>
+                    </a>
+                </li>
+
+		<!--
+		<li>
+		   <a href="/personal_calendar">
+		   	<i class="pe-7s-date pe-5x"></i>
+			   <p> Personal Calendar</p>
+		   </a>
+		</li>
+		-->	
+                <li class="">
+                    <a href="/stats/" target="_blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Stats</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/contact_us/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Contact Us</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/about/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Credits</p>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Welcome</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/abhiavk/changepassword/">Change Password</a></li>
+                        <li>
+                            <a href="/logout/">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                
+ <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Proforma</h4>
+                                <p class="category">Companies open to your department</p>
+                                <hr />
+                            </div>
+                            <div class="content">
+
+                              
+                                
+<div class="text-center">
+
+<table class="table table-centered table-reponsive table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td> Company :</td>
+            <td> Hitachi Software Services India Pvt Ltd</td>
+
+        </tr>
+        <tr>
+            <td> Company Name :</td>
+            <td> Hitachi Software Services India Pvt Ltd </td>
+
+        </tr>
+        <tr>
+            <td> Nature Of Business : </td>
+            <td> Consulting </td>
+
+        </tr>
+        <tr>
+            <td> Designation : </td>
+            <td> Consultant </td>
+
+        </tr>
+        <tr>
+            <td> Description : </td>
+            <td> <p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>Job description</strong></span></span></p>
+
+<table cellspacing="0" class="Table" style="border-collapse:collapse; border:none; width:625px">
+	<tbody>
+		<tr>
+			<td style="background-color:#c00000; height:20.1pt; width:174.55pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="color:white">CoP </span></strong></span></span></p>
+			</td>
+			<td style="height:20.1pt; vertical-align:bottom; width:294.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="color:black">Enterprise Services</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#c00000; height:20.1pt; width:174.55pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="color:white">Sub CoP</span></strong></span></span></p>
+			</td>
+			<td style="height:20.1pt; vertical-align:bottom; width:294.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="color:black">NCG </span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#c00000; height:20.1pt; width:174.55pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="color:white">Job level</span></strong></span></span></p>
+			</td>
+			<td style="height:20.1pt; vertical-align:bottom; width:294.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="color:black">Consultant</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#c00000; height:20.1pt; width:174.55pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="color:white">Graduation </span></strong></span></span></p>
+			</td>
+			<td style="height:20.1pt; vertical-align:bottom; width:294.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="color:black">Graduation  in Engineering ( CS/IT/ECE)</span></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Your time as a Consultant is focused on learning how to consult through formal training, and most importantly, with real world experience. We are looking for individuals who want to apply their education to help solve our clients' most challenging issues.</span></span></p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">As a Consultant, you will be exposed to a variety of industries, processes and technologies. Each project that you are staffed on will vary in duration, industry, location and the expectations of your role. </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">One project may be focused on supporting the implementation of a highly complex IT system, the next may be helping reengineer processes to improve efficiency. At each client engagement, you will be exposed to different business processes, organizational structures and technologies and with it, you'll face different challenges and learn about different solutions. </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">As part of a project team you will be assigned to work on a specific part of the solution, developing your foundational consulting skills in the process. Those skills typically include client communication, analysis, solution building and development support. </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Qualifications</span></span></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Engineering graduates from Computer Science, Information Technology and Electronics streams with excellent academic record throughout with 70% aggregate.</span></span></p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>Key Attributes</strong></span></span></p>
+
+<ul>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Business acumen</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Strong domain knowledge and experience</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Problem solving &amp; Analytical skills</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Excellent communication skills</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Flexible, proactive approach</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Team player</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;"><span style="color:black">Self-starter with entrepreneurial qualities</span></span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Aware of technology trends</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Keen interest in hobbies &amp; sports</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Ability to continue learning</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Well-versed in current affairs</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Reading habit</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Smart candidates having all round awareness</span></span></span></span></li>
+</ul>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">Visit us at </span><a href="http://www.hitachiconsulting.com" style="color:blue; text-decoration:underline"><span style="font-family:&quot;Cambria&quot;,&quot;serif&quot;">www.hitachiconsulting.com</span></a></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>Other details</strong></span></span></p>
+
+<table cellspacing="0" class="Table" style="border-collapse:collapse; border:none; width:612px">
+	<tbody>
+		<tr>
+			<td style="background-color:#c00000; height:15.0pt; width:170.95pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Work Timings</span></span></p>
+			</td>
+			<td style="height:15.0pt; vertical-align:bottom; width:288.35pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="color:black">9am-6pm/1pm-11pm/6am -4pm  ( candidate needs to be flexible) </span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#c00000; height:15.0pt; width:170.95pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Work Location </span></span></p>
+			</td>
+			<td style="height:15.0pt; vertical-align:bottom; width:288.35pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt">Hyderabad/Pune/Bangalore</span></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:9.0pt"><span style="color:black">Disclaimer:</span></span></strong><span style="font-size:9.0pt"><span style="color:black"> Please note that this job description is subject to change based on the business/project requirements and at the discretion of management.</span></span></span></span></p> </td>
+
+        </tr>
+      
+        <tr>
+            <td> Eligibilty : </td>
+            <td>
+                <table class="table table-centered table-reponsive text-center table-bordered table-striped table-sm">
+                    <thead class="">
+                        <tr>
+                            <td>Department</td>
+                            
+                            <td> BT</td>
+                            
+                            <td> BS</td>
+                            
+                            <td> Dual</td>
+                            
+                            <td> DoubleMajor</td>
+                            
+                            <td> MT</td>
+                            
+                            <td> MSc</td>
+                            
+                            <td> MBA</td>
+                            
+                            <td> MDes</td>
+                            
+                            <td> DualB</td>
+                            
+                            <td> PhD</td>
+                            
+                            <td> MSR</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>CSE</td>
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>EE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MnC</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ME</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CHE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>AE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MSE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ECO</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>PHY</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CHM</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>BSBE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ES</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>Stats</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MTH</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>DES</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>IME</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>HSS</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MSP</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>PSE</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>NET</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>GEO</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td> Cost to Company : </td>
+            <td> <table border="1" cellspacing="0" class="Table" style="border-collapse:collapse; border:solid black 1.0pt; margin-left:-35.1pt; width:1021px">
+	<tbody>
+		<tr>
+			<td style="background-color:#264356; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><span style="color:white">B.Tech/BS</span></span></span></strong></span></span></p>
+			</td>
+			<td colspan="3" rowspan="2" style="border-color:black; width:635.3pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><span style="color:#002060">INR 9lacs + 2lacs Joining Bonus</span></span></span></span></span></p>
+
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#264356; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><span style="color:white">M.Tech/MS</span></span></span></strong></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table> </td>
+
+        </tr>
+        <tr>
+            <td> Package Details : </td>
+            <td>  </td>
+
+        </tr>
+        <tr>
+            <td> Bond  : </td>
+            <td>False </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Medical Requirements : </td>
+            <td>Physically fit </td> 
+
+        </tr>
+        <tr>
+            <td> Resume Shortlist : </td>
+            <td>True </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Resume Shortlist Criteria: </td>
+            <td> </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Aptitude Test: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Aptitude Test Duration: </td>
+            <td>60 min </td> 
+        </tr>
+        
+        <tr>
+            <td> Group Discussion: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Group Discussion Duration: </td>
+            <td>15 min </td> 
+        </tr>
+        <tr>
+            <td> Group Discussion Strengtd: </td>
+            <td> </td> 
+        </tr>
+        
+        
+        <tr>
+            <td> Technical Test: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Test Duration: </td>
+            <td>60 min </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Interview: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Interview Duration: </td>
+            <td>20 min </td> 
+        </tr>
+        <tr>
+            <td> Number of Techincal Interview Rounds: </td>
+            <td>1 </td> 
+        </tr>
+        
+        <tr>
+            <td> HR Interview: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> HR Interview Duration: </td>
+            <td>20 min </td> 
+        </tr>
+        
+                
+
+    </tbody>
+</table>
+</div>
+
+                            
+
+                                                                    
+                                                                                                                                                                            </div>
+                                <p></p>
+                                <hr />
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+                <!-- <div class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                   Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="pull-right text-block">
+                        Developed & Maintained by <a href="/web_team" target="blank">Web Team</a>, Student Placement Office IIT Kanpur </p>
+
+                </div>
+            </div>
+
+                 -->
+
+
+
+            </div>
+        
+
+    
+
+
+
+
+
+        <script type="text/javascript">
+  $(document).ready(function(){
+    $('#confirm').on('show.bs.modal',function(event){
+      var button = $(event.relatedTarget);
+      var resume_id = button.data('resume');
+      var modal = $(this);
+      modal.find(".modal-body button[name = 'delete']").val(resume_id);
+    });
+  })
+  </script>
+ 
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            demo.initChartist();
+
+            $.notify({
+                icon: 'pe-7s-gift',
+                message: "Welcome &lt;b&gt;&lt;/b&gt; to &lt;b&gt;IAS Portal&lt;/b&gt;"
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+        });
+    </script>
+    <!-- <script type="text/javascript">
+    $('#news').html($('#news').text());
+    </script> -->
+
+<div class="collapse navbar-collapse" data-color="purple"><div class="logo">
+                <a class="simple-text">
+                    Dashboard
+                </a>
+            </div><ul class="nav navbar-nav">
+                <li>
+                    <a href="/dashboard/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile/">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/resume/">
+                        <i class="pe-7s-note2"></i>
+                        <p>Manage Resume</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jobapplications/">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Job Openings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/applications/">
+                        <i class="pe-7s-science"></i>
+                        <p>Your applications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jaf_list/">
+                        <i class="pe-7s-bell"></i>
+                        <p>Proforma</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/abhiavk/testschedule">
+                        <i class="pe-7s-date pe-5x"></i>
+                        <p>Calendar</p>
+                    </a>
+                </li>
+
+		<!--
+		<li>
+		   <a href="/personal_calendar">
+		   	<i class="pe-7s-date pe-5x"></i>
+			   <p> Personal Calendar</p>
+		   </a>
+		</li>
+		-->	
+                <li class="">
+                    <a href="/stats/" target="_blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Stats</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/contact_us/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Contact Us</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/about/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Credits</p>
+                    </a>
+                </li>
+            
+                        <li><a href="/abhiavk/changepassword/">Change Password</a></li>
+                        <li>
+                            <a href="/logout/">
+                                Log out
+                            </a>
+                        </li>
+                    </ul></div></body></html>

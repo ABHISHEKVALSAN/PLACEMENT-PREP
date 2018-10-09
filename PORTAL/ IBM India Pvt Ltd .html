@@ -1,0 +1,1800 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Student Dashboard</title>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -- >
+    
+    <!--TODO: Common Date Picker. UI-->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/css/animate.min.css" rel="stylesheet" />
+    <link href="/static/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+    <link href="/static/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/poweruser/css/datatables.css" />
+
+    <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/static/js/light-bootstrap-dashboard.js"></script>
+    <script src="/static/poweruser/js/datatables.js"></script>
+        <script type="text/javascript">
+    $(document).ready(function() {
+        $('#Table').DataTable({"pageLength": 50});
+    } );
+
+    </script>
+
+
+<style type="text/css">
+    
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+
+</style></head>
+
+<body style="">
+
+<div class="modal" role="dialog" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">title</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple">
+        <div class="sidebar-wrapper">
+
+            <div class="logo">
+                <a class="simple-text">
+                    Dashboard
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="/dashboard/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile/">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/resume/">
+                        <i class="pe-7s-note2"></i>
+                        <p>Manage Resume</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jobapplications/">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Job Openings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/applications/">
+                        <i class="pe-7s-science"></i>
+                        <p>Your applications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jaf_list/">
+                        <i class="pe-7s-bell"></i>
+                        <p>Proforma</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/abhiavk/testschedule">
+                        <i class="pe-7s-date pe-5x"></i>
+                        <p>Calendar</p>
+                    </a>
+                </li>
+
+		<!--
+		<li>
+		   <a href="/personal_calendar">
+		   	<i class="pe-7s-date pe-5x"></i>
+			   <p> Personal Calendar</p>
+		   </a>
+		</li>
+		-->	
+                <li class="">
+                    <a href="/stats/" target="_blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Stats</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/contact_us/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Contact Us</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/about/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Credits</p>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Welcome</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/abhiavk/changepassword/">Change Password</a></li>
+                        <li>
+                            <a href="/logout/">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                
+ <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Proforma</h4>
+                                <p class="category">Companies open to your department</p>
+                                <hr />
+                            </div>
+                            <div class="content">
+
+                              
+                                
+<div class="text-center">
+
+<table class="table table-centered table-reponsive table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td> Company :</td>
+            <td> IBM India Pvt Ltd</td>
+
+        </tr>
+        <tr>
+            <td> Company Name :</td>
+            <td> IBM India Pvt Ltd </td>
+
+        </tr>
+        <tr>
+            <td> Nature Of Business : </td>
+            <td> IT Company </td>
+
+        </tr>
+        <tr>
+            <td> Designation : </td>
+            <td> Software Engineer ( Fixed Term Hire for 24 months) </td>
+
+        </tr>
+        <tr>
+            <td> Description : </td>
+            <td> <p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt">Job Code                                : 116900BR</span></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt">Job Title                                 : Software Engineer </span></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt">Work Location                      : New Delhi/Bangalore</span></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u><span style="font-family:&quot;Cambria&quot;,serif">About IBM:</span></u></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">IBM is a global technology and innovation company. It is the largest technology and consulting employer in the world, with presence in 170 countries. The diversity and breadth of the entire IBM portfolio of research, consulting, solutions, services, systems and software, uniquely distinguishes IBM from other companies in the industry. </span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Over the past 100 years, a lot has changed at IBM, in this new era of Cognitive Business, IBM is helping to reshape industries as diverse as healthcare, retail, banking, travel, manufacturing, and many more, by bringing together our expertise in Cloud, Analytics, Security, Mobile, and the Internet of Things.  We like to say, “be essential.” We are changing how we create. How we collaborate. How we analyze. How we engage. IBM is a leader in this global transformation. </span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Join the next generation of innovators, inventors and entrepreneurs who are changing the very way the world works. We want the brightest minds doing work that inspires, in an environment where growth is encouraged. IBMers get to discover their potential, so they’re inspired to create breakthroughs that help our clients succeed. We’re building diverse teams with people who want their ideas to matter. Join us — you’ll be proud to call yourself an IBMer. </span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"> <br />
+<strong><u><span style="font-family:&quot;Cambria&quot;,serif">Business Unit Introduction</span></u></strong><u><span style="font-family:&quot;Cambria&quot;,serif"> :</span></u></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">IBM Research </span></span></span></strong><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">is the innovation engine of the IBM corporation. It is the largest industrial research organization in the world with 12 labs on 6 continents.  IBM Research produces more breakthroughs–more than 9 patents are produced every day–than any other organization in the world. IBM employs over 3200 researchers worldwide</span></span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">Since its inception in1998 as IBM Research’s eighth laboratory, IRL India has produced many breakthrough innovations and has emerged as a premier research lab in the region with an impressive list of achievements, including innovations in service delivery such as customer analytics, workforce management and global delivery management.  In a short time, IBM’s research laboratory in India has become a microcosm of the best of IBM research worldwide.</span></span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">IBM Research India</span></span></span></strong><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black"> is currently focused on using cognitive technologies (machine learning, pattern recognition, software engineering, analytics) to solve problems in several industry domains such as Financial Services, Education, HR, Tech support, manufacturing, commerce and health, Energy and Utilities), solving unique challenges in emerging markets such as spoken web, cleansing of noisy data, and scalable analytics platforms for the telecom industry.</span></span></span></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"> </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"> </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Follow Us On </span></span></span></span></p>
+
+<table cellspacing="0" class="Table" style="border-collapse:collapse; border:undefined">
+	<tbody>
+		<tr>
+			<td style="vertical-align:top; width:.7in">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><img id="_x0000_i1028" src="data:image/png;base64,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" style="height:12pt; width:29.25pt" /> </span></span></span></span></p>
+			</td>
+			<td style="vertical-align:top; width:5.95in">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:blue">https://www.research.ibm.com/labs/india/</span></span></span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top; width:.7in">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><img id="Picture_x0020_4" src="data:image/png;base64,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" style="height:16.5pt; width:41.25pt" /> </span></span></span></span></p>
+			</td>
+			<td style="vertical-align:top; width:5.95in">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:#3333ff">https://www.youtube.com/user/IBMLabs</span></span></span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top; width:.7in">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><img id="Picture_x0020_1" src="data:image/png;base64,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" style="height:16.5pt; width:15.75pt" /> </span></span></span></span></p>
+			</td>
+			<td style="vertical-align:top; width:5.95in">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><cite><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:blue">https://twitter.com/IBMResearch</span></span></span></cite></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top; width:.7in">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><img id="Picture_x0020_7" src="data:image/png;base64,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" style="height:18pt; width:18.75pt" /> </span></span></span></span></p>
+			</td>
+			<td style="vertical-align:top; width:5.95in">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:#3333ff">https://www.linkedin.com/company/ibm-research</span></span></span></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"> <br />
+<br />
+<br />
+ <strong><u><span style="font-family:&quot;Cambria&quot;,serif">Who you are</span></u></strong><u><span style="font-family:&quot;Cambria&quot;,serif">:</span></u></span></span><br />
+ </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Helv&quot;,sans-serif"><span style="color:black">We are seeking candidates with deep knowledge of computer science or related fields. Ability to learn quickly and work with a global team in an agile fashion are desirable traits.</span></span></span> </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u><span style="font-family:&quot;Cambria&quot;,serif">What you’ll do:</span></u></strong> </span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif">Software Engineer position at IBM India Research Lab is a challenging, dynamic and highly innovative role.</span></span></span></span></p>
+
+<ol>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:black">We are creating new products and service offerings based on advanced text and content analytics, machine learning, natural language processing, and the Watson technology.</span></span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:black">We are building platforms for supporting personalized education, new methods of naturally interacting with enterprise infrastructure and systems, and new methods of delivering domain specific insights to customers.</span></span></span></span></span><br />
+	 </li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:black">We are also conducting research on the next generation of cognitive interaction technologies.</span></span></span></span></span></li>
+</ol>
+
+<p style="margin-left:0.5in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u><span style="font-family:&quot;Cambria&quot;,serif">How we’ll help you grow:</span></u></strong><u> </u></span></span></p>
+
+<ul>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">You’ll have access to all the technical and management training courses you need to become the expert you want to be</span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">You’ll learn directly from expert developers in the field; our SME's love to mentor.</span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:11pt"><span style="color:black"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">You have the opportunity to work in many different areas to figure out what really excites you</span></span></span></span></span></li>
+</ul>
+
+<p style="margin-left:0in; margin-right:0in; text-align:justify"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Required Professional and Technical Expertise</span></span></u></strong></span></span></p>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<ul>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">Experience in Machine Learning, Data and Text Mining, Natural Language Processing, Information Retrieval, Information Extraction, Internet-of-Things (IoT), Blockchain, cognitive interaction technologies. </span></span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">Client-facing projects with ground-up solution and platform development.</span></span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">Focal point between multiple research teams, product teams and clients, for IoT-analytics architecture.</span></span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Passion for developing high quality code and solutions.</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Ability to work with multiple technologies.</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">J2EE development - proven programming experience and skills</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Data bases and data modeling</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Experience with enterprise quality software development</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Linux</span></span> </span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Comfortable with software installation, configuration and system administration</span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Proven programming and system development skills</span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Proven Communication Skills</span></span></span></span></li>
+</ul>
+
+<p style="margin-left:0in; margin-right:0in"> </p>
+
+<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><u><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">Preferred Professional and Technical Expertise</span></span></u></strong></span></span></p>
+
+<ul>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif">JavaScript, HTML5/CSS</span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Helv&quot;,sans-serif"><span style="color:black">Distributed systems and applications, Cloud computing, Security</span></span></span></span></span></li>
+	<li><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Cambria&quot;,serif"><span style="color:black">Agile software development across technologies and languages. Work with a combination of open source and IBM technologies like Spark, RabbitMQ, Bluemix, Cassandra, Hadoop, J2EE, SOA among others. </span></span></span></span></span></li>
+</ul> </td>
+
+        </tr>
+      
+        <tr>
+            <td> Eligibilty : </td>
+            <td>
+                <table class="table table-centered table-reponsive text-center table-bordered table-striped table-sm">
+                    <thead class="">
+                        <tr>
+                            <td>Department</td>
+                            
+                            <td> BT</td>
+                            
+                            <td> BS</td>
+                            
+                            <td> Dual</td>
+                            
+                            <td> DoubleMajor</td>
+                            
+                            <td> MT</td>
+                            
+                            <td> MSc</td>
+                            
+                            <td> MBA</td>
+                            
+                            <td> MDes</td>
+                            
+                            <td> DualB</td>
+                            
+                            <td> PhD</td>
+                            
+                            <td> MSR</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>CSE</td>
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>EE</td>
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                                <td>Y</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MnC</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ME</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CHE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>AE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MSE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ECO</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>PHY</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>CHM</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>BSBE</td>
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>ES</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>Stats</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MTH</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>DES</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>IME</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>HSS</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>MSP</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>PSE</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>NET</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr><tr>
+                            <td>GEO</td>
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>N</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                            <td>-</td>
+                            
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td> Cost to Company : </td>
+            <td> <table border="1" cellspacing="0" class="Table" style="border-collapse:collapse; border:solid black 1.0pt; margin-left:-35.1pt; width:0px">
+	<tbody>
+		<tr>
+			<td style="background-color:#1481ab; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">Program</span></span></span></strong></span></span></p>
+			</td>
+			<td style="background-color:#2e653e; border-color:black; width:111.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">Basic</span></span></span></strong></span></span></p>
+			</td>
+			<td style="background-color:#2e653e; border-color:black; width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">HRA</span></span></span></strong></span></span></p>
+			</td>
+			<td style="background-color:#2e653e; border-color:black; width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">Others</span></span></span></strong></span></span></p>
+			</td>
+			<td style="background-color:#2e653e; border-color:black; width:118.75pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">Take Home</span></span></span></strong></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#264356; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">B.Tech/BS</span></span></span></strong></span></span></p>
+			</td>
+			<td style="width:111.7pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">AR-21 Lakhs-22.5 Lakhs</span></span></span></span></span></p>
+
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">Variable is over and above AR which cannot be disclosed</span></span></span></span></span></p>
+			</td>
+			<td style="width:118.75pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#264356; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">M.Tech/MS</span></span></span></strong></span></span></p>
+			</td>
+			<td style="width:111.7pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">AR-21 Lakhs-22.5 Lakhs</span></span></span></span></span></p>
+
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">Variable is over and above AR which cannot be disclosed</span></span></span></span></span></p>
+			</td>
+			<td style="width:118.75pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color:#264356; border-color:black; width:130.7pt">
+			<p style="margin-left:0in; margin-right:0in; text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:white">Dual Degree</span></span></span></strong></span></span></p>
+			</td>
+			<td style="width:111.7pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+			<td style="width:125.45pt">
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">AR-21 Lakhs-22.5 Lakhs</span></span></span></span></span></p>
+
+			<p style="margin-left:0in; margin-right:0in"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:11.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#002060">Variable is over and above AR which cannot be disclosed</span></span></span></span></span></p>
+			</td>
+			<td style="width:118.75pt">
+			<p style="margin-left:0in; margin-right:0in"> </p>
+			</td>
+		</tr>
+	</tbody>
+</table> </td>
+
+        </tr>
+        <tr>
+            <td> Package Details : </td>
+            <td>  </td>
+
+        </tr>
+        <tr>
+            <td> Bond  : </td>
+            <td>False </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Medical Requirements : </td>
+            <td>No </td> 
+
+        </tr>
+        <tr>
+            <td> Resume Shortlist : </td>
+            <td>True </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Resume Shortlist Criteria: </td>
+            <td> </td> 
+
+        </tr>
+        
+        <tr>
+            <td> Aptitude Test: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Aptitude Test Duration: </td>
+            <td>1 hr 45 min </td> 
+        </tr>
+        
+        <tr>
+            <td> Group Discussion: </td>
+            <td>False </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Test: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Test Duration: </td>
+            <td>1 Hour </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Interview: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> Technical Interview Duration: </td>
+            <td>1 hr </td> 
+        </tr>
+        <tr>
+            <td> Number of Techincal Interview Rounds: </td>
+            <td>1 </td> 
+        </tr>
+        
+        <tr>
+            <td> HR Interview: </td>
+            <td>True </td> 
+        </tr>
+        
+        <tr>
+            <td> HR Interview Duration: </td>
+            <td>30 min </td> 
+        </tr>
+        
+                
+
+    </tbody>
+</table>
+</div>
+
+                            
+
+                                                                    
+                                                                                                                                                                            </div>
+                                <p></p>
+                                <hr />
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+                <!-- <div class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                   Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="pull-right text-block">
+                        Developed & Maintained by <a href="/web_team" target="blank">Web Team</a>, Student Placement Office IIT Kanpur </p>
+
+                </div>
+            </div>
+
+                 -->
+
+
+
+            </div>
+        
+
+    
+
+
+
+
+
+        <script type="text/javascript">
+  $(document).ready(function(){
+    $('#confirm').on('show.bs.modal',function(event){
+      var button = $(event.relatedTarget);
+      var resume_id = button.data('resume');
+      var modal = $(this);
+      modal.find(".modal-body button[name = 'delete']").val(resume_id);
+    });
+  })
+  </script>
+ 
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            demo.initChartist();
+
+            $.notify({
+                icon: 'pe-7s-gift',
+                message: "Welcome &lt;b&gt;&lt;/b&gt; to &lt;b&gt;IAS Portal&lt;/b&gt;"
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+        });
+    </script>
+    <!-- <script type="text/javascript">
+    $('#news').html($('#news').text());
+    </script> -->
+
+<div class="collapse navbar-collapse" data-color="purple"><div class="logo">
+                <a class="simple-text">
+                    Dashboard
+                </a>
+            </div><ul class="nav navbar-nav">
+                <li>
+                    <a href="/dashboard/">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile/">
+                        <i class="pe-7s-user"></i>
+                        <p>My Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/resume/">
+                        <i class="pe-7s-note2"></i>
+                        <p>Manage Resume</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jobapplications/">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Job Openings</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/applications/">
+                        <i class="pe-7s-science"></i>
+                        <p>Your applications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/jaf_list/">
+                        <i class="pe-7s-bell"></i>
+                        <p>Proforma</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/abhiavk/testschedule">
+                        <i class="pe-7s-date pe-5x"></i>
+                        <p>Calendar</p>
+                    </a>
+                </li>
+
+		<!--
+		<li>
+		   <a href="/personal_calendar">
+		   	<i class="pe-7s-date pe-5x"></i>
+			   <p> Personal Calendar</p>
+		   </a>
+		</li>
+		-->	
+                <li class="">
+                    <a href="/stats/" target="_blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Stats</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/contact_us/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Contact Us</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="/about/" target="blank">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Credits</p>
+                    </a>
+                </li>
+            
+                        <li><a href="/abhiavk/changepassword/">Change Password</a></li>
+                        <li>
+                            <a href="/logout/">
+                                Log out
+                            </a>
+                        </li>
+                    </ul></div></body></html>
