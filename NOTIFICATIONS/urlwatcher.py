@@ -54,13 +54,12 @@ def sendMailToAll(msg,sender,code,receivers):
         except:
             print('Error sendnig mail to '+receiver)
     server.quit()
-def DashUpdates(dashList,prevUpdate):
+def DashUpdates(dashList,dashMsgList,prevUpdate):
     k=0
     msg="\n\n**UPDATE**\n\n"
     while k<len(dashList) and dashList[k].text.strip()!=prevUpdate:
-        subprocess.Popen(['notify-send',"UPDATE",dashList[k].text.strip()])
-        msg=msg+"\n\nUPDATE #"+str(k)+"\n\n"+dashList[k].text.strip()
-        print (dashList[k].text.strip())
+        subprocess.Popen(['notify-send',"UPDATE",dashList[k].text.strip()+"\n"+dashMsgList[k].text.strip()])
+        msg=msg+"\n\nUPDATE #"+str(k)+"\n\n"+dashList[k].text.strip()+"\n"+dashMsgList[k].text.strip()
         k+=1
     return msg
 def main():
@@ -76,15 +75,16 @@ def main():
             page_source=driver.page_source
             soup=BeautifulSoup(page_source,'html.parser')
             dashList=soup.findAll("div",{"class":"col-sm-9"})
+            dashMsgList=soup.findAll("div",{"class","panel-body news"})
             presUpdate=(dashList[0].text).strip()
             if prevUpdate!=presUpdate and i!=0:
-                msg=DashUpdates(dashList,prevUpdate)
+                msg=DashUpdates(dashList,dashMsgList,prevUpdate)
                 sendMailToAll(msg,uname2,gocode2,receivers)
             else:
                 prevUpdate=presUpdate
-                print("no change")
+                print("No new updates!!!")
                 i=1
-            print("Running time : ",datetime.datetime.now()-s)
+            print("Time elapsed : ",datetime.datetime.now()-s)
             time.sleep(60)
         except:
             i=0
