@@ -81,15 +81,14 @@ def main():
                 msg=DashUpdates(dashList,dashMsgList,prevUpdate)
                 sendMailToAll(msg,uname2,gocode2,receivers)
             else:
-                prevUpdate=presUpdate
                 print("No new updates!!!")
                 i=1
-            print("Time elapsed : ",datetime.datetime.now()-s)
+            prevUpdate=presUpdate
+            print("Time elapsed : ",datetime.datetime.now()-s,"Time now : ",datetime.datetime.now())
             time.sleep(60)
         except:
             i=0
             print("Connection  Failed !!!")
-            time.sleep(200)
             driver,uname2,gocode2=refreshSession()
 if __name__=="__main__":
     main()

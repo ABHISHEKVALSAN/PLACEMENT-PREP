@@ -46,7 +46,6 @@ def refreshSession():
 def sendMailToAll(msg,sender,code,receivers):
     server=smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
-    #sender="motamarrianusha01"
     server.login(sender,code)
     for receiver in receivers:
         try:
@@ -88,12 +87,11 @@ def main():
                 print("No new Jobs.")
                 i=1
             prevComp=prevComp+newComp
-            print("Time elapsed :",datetime.datetime.now()-s)
+            print("Time elapsed : ",datetime.datetime.now()-s,"Time now : ",datetime.datetime.now())
             time.sleep(60)
         except:
             i=0
             print("Connection  Failed !!!")
-            time.sleep(200)
             driver,uname2,gocode2=refreshSession()
 if __name__=="__main__":
     main()
