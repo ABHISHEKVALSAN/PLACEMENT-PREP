@@ -52,6 +52,7 @@ def sendMailToAll(msg,sender,code,receivers):
             print ("sending mail to "+receiver)
             server.sendmail(sender,receiver,msg)
             print("mail sent")
+            time.sleep(11)
         except:
             print('Error sendnig mail to '+receiver)
     server.quit()

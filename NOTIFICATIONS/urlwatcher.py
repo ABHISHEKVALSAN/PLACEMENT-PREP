@@ -51,6 +51,7 @@ def sendMailToAll(msg,sender,code,receivers):
             print ("sending mail to "+receiver)
             server.sendmail(sender,receiver,msg)
             print("mail sent")
+            time.sleep(11)
         except:
             print('Error sendnig mail to '+receiver)
     server.quit()
@@ -65,7 +66,7 @@ def DashUpdates(dashList,dashMsgList,prevUpdate):
 def main():
     driver,uname2,gocode2=refreshSession()
     url="http://placement.iitk.ac.in/dashboard/"
-    prevUpdate="Profile"
+    prevUpdate="Appdynamics India Pvt Ltd. : Deadline Extended"
     i=0
     receivers=getReceivers()
     s=datetime.datetime.now()
