@@ -46,6 +46,7 @@ def sendMailToAll(msg,sender,code,receivers):
     server=smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
     server.login(sender,code)
+    #print(msg)
     for receiver in receivers:
         try:
             print ("sending mail to "+receiver)
@@ -62,11 +63,11 @@ def DashUpdates(dashList,dashMsgList,prevUpdate):
         subprocess.Popen(['notify-send',"UPDATE",dashList[k].text.strip()+"\n"+dashMsgList[k].text.strip()])
         msg=msg+"\n\nUPDATE #"+str(k)+"\n\n"+dashList[k].text.strip()+"\n"+dashMsgList[k].text.strip()
         k+=1
-    return msg
+    return msg.encode('utf-8')
 def main():
     driver,uname2,gocode2=refreshSession()
     url="http://placement.iitk.ac.in/dashboard/"
-    prevUpdate="Appdynamics India Pvt Ltd. : Deadline Extended"
+    prevUpdate="Quadeye Securities : Test Venue"
     i=0
     receivers=getReceivers()
     s=datetime.datetime.now()
