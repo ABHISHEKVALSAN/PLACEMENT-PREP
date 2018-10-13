@@ -67,7 +67,7 @@ def DashUpdates(dashList,dashMsgList,prevUpdate):
 def main():
     driver,uname2,gocode2=refreshSession()
     url="http://placement.iitk.ac.in/dashboard/"
-    prevUpdate="Quadeye Securities : Test Venue"
+    prevUpdate="HarnessIo : Test"
     i=0
     receivers=getReceivers()
     s=datetime.datetime.now()
