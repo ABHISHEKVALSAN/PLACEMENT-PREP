@@ -65,15 +65,18 @@ int traverse(int a[1000][1000],int n,int m,int i,int j,int h){
     return -1;
 }
 int main(){
+  
+  //di,dj is the destination indices
+  //h is the height for the jump or the difficulty
   int i,j,di,dj,t,T,test_cases,n,m,h,ans=-1;
   int a[1000][1000];
-  cout<<"No of testcases : ";
+  cout<<"Enter no of testcases \n";
   cin>>T;
   for(t=1;t<=T;t++){
-    cout<<" Enter dimensions : ";
+    cout<<" Enter dimensions  \n";
     cin>>n>>m;
     h=n-1;
-    cout<<" Enter Elements    : ";
+    cout<<" Enter Elements \n";
     for(i=1;i<=n;i++)
       for(j=1;j<=m;j++){
         cin>>a[i][j];
