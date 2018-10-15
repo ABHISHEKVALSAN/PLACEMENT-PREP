@@ -8,11 +8,14 @@ class Graph:
         self.V              =   V
         self.E              =   0
         self.vertexList     =   range(V)
+
         self.adjList        =   []
-        self.adjMat         =   []
-        self.edgeList       =   []
         for i in range(V):
             self.adjList.append([])
+
+        self.adjMat         =   []
+        self.edgeList       =   []
+
     def makeAdjMat(self,V):
         adjMat=[]
         for i in range(V):
