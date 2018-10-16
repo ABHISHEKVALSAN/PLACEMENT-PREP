@@ -4,7 +4,7 @@ def solve(x,a,b):
     print x,X,a,b
     dp=[i*a for i in range(X+1)]
     i=1
-    while i<=x:
+    while i<=X:
         dp[i]=min(dp[i-1]+a,dp[i],dp[i+1]+a)
         j=i*2
         if j<=X:
