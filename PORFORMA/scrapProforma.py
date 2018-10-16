@@ -6,7 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 def setDriverOptions():
-
 	options 				= Options()
 	options.binary_location = "/usr/bin/chromium-browser"
 	#options.add_argument("--headless")
@@ -32,9 +31,9 @@ for i in xrange(199,300):
         page_source=driver.page_source
         soup=BeautifulSoup(page_source,'html.parser')
         compName=soup.findAll("td")[3].text
-        print i,compName
+        print(i,compNmae)
         f = open(compName+'.html'  , 'w')
         f.write(page_source.encode('utf-8'))
         f.close()
     except:
-        print i
+        print(i)
