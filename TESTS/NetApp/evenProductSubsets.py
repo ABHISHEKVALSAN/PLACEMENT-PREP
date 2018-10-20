@@ -1,6 +1,5 @@
 def power(x,n):
     global mod
-    print(x,n)
     if n==0:
         return 1
     if n==1:
