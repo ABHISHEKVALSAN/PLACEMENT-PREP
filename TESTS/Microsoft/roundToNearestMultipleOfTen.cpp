@@ -20,7 +20,7 @@ int main(){
 					str[i]=str[i]+1;
 					break;;
 				}
-				i--;
+				 i--;
 			}
 			if(i==-1)
         cout<<1<<str<<endl;
