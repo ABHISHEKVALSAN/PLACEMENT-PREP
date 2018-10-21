@@ -4,16 +4,23 @@ def convert(day,month,year):
     date=year+month+day
     print int(date)
 
-def getMonDat(text,year):
+def getMonDatl(text,year):
     month=["January","February","March","April","May","June","July","August","September","October","November","December",\
        "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER",\
         "Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec.",\
         "JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC",\
-
+           "01","02","03","04","05","06","07","08","09","10","11","12",\
       ]
+    i=0
+    mon=""
     for m in month:
         if m in text:
+            flag=1
             print text,m
+            mon=str((i%12)+1).zfill(2)
+            break
+        i+=1
+    print mon
 
 text=""
 while True:
