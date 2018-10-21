@@ -1,11 +1,19 @@
 # Enter your code here. Read input from STDIN. Print output to STDOU
 import re
-month=["January","JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"]
 def convert(day,month,year):
     date=year+month+day
     print int(date)
 
 def getMonDat(text,year):
+    month=["January","February","March","April","May","June","July","August","September","October","November","December",\
+       "JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER",\
+        "Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec.",\
+        "JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC",\
+
+      ]
+    for m in month:
+        if m in text:
+            print text,m
 
 text=""
 while True:
@@ -16,6 +24,7 @@ while True:
     text=text+" "+line
 lInd=[m.start() for m in re.finditer('[0-9]{4}',text)]
 for ind in lInd:
+    print text[ind-15:ind+15]
     year=text[ind:ind+4]
     getMonDat(text[ind-15:ind],year)
     getMonDat(text[ind+4:ind+15],year)
