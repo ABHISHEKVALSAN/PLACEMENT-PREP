@@ -6,4 +6,3 @@ class Solution:
         I=int(s)+1
         ans=map(int,list(str(I)))
         return ans
-

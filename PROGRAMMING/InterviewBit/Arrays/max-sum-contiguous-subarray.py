@@ -19,5 +19,4 @@ class Solution:
             if s>ms:
                 ms=s
         return ms
-
-#Tip 1: If all numbers in a list is negative, then it has to be handled separatly 
+#Tip 1: If all numbers in a list is negative, then it has to be handled separatly
