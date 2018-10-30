@@ -1,3 +1,16 @@
+/*
+QUESTION:
+FIND THE DIFFICULTY OF THE CLIMB.
+Given a grid( nXm matrix) containing values 0,1,2 and 3.
+0 represents no path.
+1 represent an existing path.
+2 is the starting point.
+3 is the destination.
+Starting point is always at left bottom matrix[n,1].
+Destination can be anywhere in the matrix. It is assured that a path exist.
+A rockclimber can move right or left if the adjacent element is also 1.
+The rockclimber however climb up or down skip any number of rows the more rows he skip the greater will the difficulty.
+*/
 #include<iostream>
 using namespace std;
 void printMat(int a[1000][1000],int n,int m){
