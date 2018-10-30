@@ -78,7 +78,6 @@ def main():
             for rows in updates[1:]:
                 if str(rows.find("td"))[4:-5] not in prevComp:
                     newComp.append(str(rows.find("td"))[4:-5])
-                    print(newComp)
             if len(newComp)>0 and i!=0:
                 print (newComp)
                 msg="\n".join(newComp)
