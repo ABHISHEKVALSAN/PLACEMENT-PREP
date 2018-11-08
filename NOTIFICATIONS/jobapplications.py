@@ -9,7 +9,7 @@ import requests
 import smtplib
 import subprocess
 import time
-
+import traceback
 
 def setDriverOptions():
     options = Options()
