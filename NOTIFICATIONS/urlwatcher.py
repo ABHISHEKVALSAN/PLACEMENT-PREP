@@ -92,8 +92,14 @@ def main():
             time.sleep(60)
         except:
             print(traceback.format_exc())
-            i=0
-            print("Connection  Failed !!!")
-            driver,uname2,gocode2=refreshSession()
+			while True:
+				try:
+					i=0
+					print("Connection  Failed !!!")
+            		driver,uname2,gocode2=refreshSession()
+					break
+				except:
+					print(traceback.format_exc())
+					pass
 if __name__=="__main__":
     main()
