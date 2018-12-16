@@ -9,6 +9,7 @@ import requests
 import smtplib
 import subprocess
 import time
+import traceback
 
 def setDriverOptions():
     options = Options()
@@ -54,6 +55,7 @@ def sendMailToAll(msg,sender,code,receivers):
             print("mail sent")
             time.sleep(11)
         except:
+            print(traceback.format_exc())
             print('Error sendnig mail to '+receiver)
     server.quit()
 def DashUpdates(dashList,dashMsgList,prevUpdate):
@@ -89,8 +91,15 @@ def main():
             print("Time elapsed : ",datetime.datetime.now()-s,"Time now : ",datetime.datetime.now())
             time.sleep(60)
         except:
-            i=0
-            print("Connection  Failed !!!")
-            driver,uname2,gocode2=refreshSession()
+            print(traceback.format_exc())
+			while True:
+				try:
+					i=0
+					print("Connection  Failed !!!")
+            		driver,uname2,gocode2=refreshSession()
+					break
+				except:
+					print(traceback.format_exc())
+					pass
 if __name__=="__main__":
     main()
