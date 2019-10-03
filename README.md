@@ -2,4 +2,10 @@
 Placement preparations
 
 ## Ping me if you want to be a collaborator
-You can add and edit programs that can help others refer.
+Submit your solution in the following format:
+
+Description the problem statement
+TESTS/<year>/<company_name>/<question_name>.txt  
+
+A easily working solution
+TESTS/<year>/<company_name>/<question_name>.py
